@@ -1,0 +1,79 @@
+# AutoBleem's OpenBIOS: built in PCSX-Redux's own image (the MIPS toolchain), checked, and published as
+# openbios-<version>.bin - a v* tag as a release, develop as the rolling `nightly` pre-release that
+# autobleem-appliance's assembly bundles into every package but the console's. Gated by AB_CI_ENABLED, like
+# every autobleem2 repository. A two-minute build: GitHub's runner, no routing.
+name: autobleem
+on:
+  push:
+    branches: [develop]
+    tags: ['v*']
+  pull_request:
+    branches: [develop]
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+concurrency:
+  group: autobleem-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    if: vars.AB_CI_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    container: ghcr.io/grumpycoders/pcsx-redux-build:latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          set-safe-directory: true
+      - name: Version
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then echo "AB_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+          else echo "AB_VERSION=$(tr -d '\r\n' < VERSION)-$(date -u +%Y%m%d)-$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"; fi
+      - name: Build and check
+        run: ci/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: openbios
+          path: dist/*
+          retention-days: 30
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions: { contents: write }
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: openbios, path: out }
+      - name: Attach to the release
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          prerelease=""; case "${GITHUB_REF_NAME}" in *-*) prerelease="--prerelease";; esac
+          gh release create "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" \
+            --title "OpenBIOS for AutoBleem ${GITHUB_REF_NAME}" --generate-notes $prerelease out/* || \
+          gh release upload "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" out/* --clobber
+
+  nightly:
+    if: github.ref == 'refs/heads/develop' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions: { contents: write }
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: openbios, path: out }
+      # the admin App's token, so the new nightly starts autobleem-appliance's assembly at once (without
+      # AB_ADMIN_APP_ID the appliance's schedule assembles it instead)
+      - id: app
+        if: vars.AB_ADMIN_APP_ID != ''
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.AB_ADMIN_APP_ID }}
+          private-key: ${{ secrets.AB_ADMIN_APP_KEY }}
+          owner: autobleem2
+          repositories: autobleem-appliance
+      - uses: autobleem2/autobleem-build/.github/actions/nightly-release@develop
+        with:
+          files: out/*
+          dispatch-token: ${{ steps.app.outputs.token }}
