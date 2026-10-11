@@ -1,0 +1,415 @@
+{
+ "auto": {
+  "file": "layer-auto.png",
+  "mode": "add",
+  "size": [
+   155,
+   44
+  ],
+  "topleft": [
+   111,
+   205
+  ],
+  "pivot_in_layer": [
+   384.5,
+   22.8
+  ],
+  "base_tint_rgb": [
+   88,
+   89,
+   88
+  ],
+  "bpp": 4,
+  "note": "AUTO, steel",
+  "letters_x_in_layer": [
+   [
+    1,
+    39
+   ],
+   [
+    42,
+    43
+   ],
+   [
+    44,
+    77
+   ],
+   [
+    81,
+    111
+   ],
+   [
+    115,
+    155
+   ]
+  ]
+ },
+ "bleem": {
+  "file": "layer-bleem.png",
+  "mode": "add",
+  "size": [
+   182,
+   44
+  ],
+  "topleft": [
+   269,
+   206
+  ],
+  "pivot_in_layer": [
+   226.5,
+   21.8
+  ],
+  "base_tint_rgb": [
+   240,
+   248,
+   250
+  ],
+  "bpp": 4,
+  "note": "BLEEM, white",
+  "letters_x_in_layer": [
+   [
+    2,
+    32
+   ],
+   [
+    40,
+    65
+   ],
+   [
+    73,
+    96
+   ],
+   [
+    105,
+    128
+   ],
+   [
+    137,
+    180
+   ]
+  ]
+ },
+ "bar": {
+  "file": "layer-bar.png",
+  "mode": "add",
+  "size": [
+   417,
+   29
+  ],
+  "topleft": [
+   105,
+   257
+  ],
+  "pivot_in_layer": [
+   8.5,
+   14.5
+  ],
+  "base_tint_rgb": [
+   54,
+   217,
+   224
+  ],
+  "bpp": 4,
+  "note": "cyan bar with glow, fading right; pivot = its left end"
+ },
+ "rim": {
+  "file": "layer-rim.png",
+  "mode": "add",
+  "size": [
+   91,
+   80
+  ],
+  "topleft": [
+   450,
+   188
+  ],
+  "pivot_in_layer": [
+   45.5,
+   39.8
+  ],
+  "base_tint_rgb": [
+   255,
+   70,
+   170
+  ],
+  "bpp": 4,
+  "note": "capsule rim + glow"
+ },
+ "inner": {
+  "file": "layer-inner.png",
+  "mode": "opaque",
+  "size": [
+   62,
+   52
+  ],
+  "topleft": [
+   465,
+   202
+  ],
+  "pivot_in_layer": [
+   30.5,
+   25.8
+  ],
+  "base_tint_rgb": [
+   255,
+   255,
+   255
+  ],
+  "bpp": 8,
+  "note": "capsule inside, graphite gradient, opaque"
+ },
+ "two": {
+  "file": "layer-two.png",
+  "mode": "add",
+  "size": [
+   29,
+   39
+  ],
+  "topleft": [
+   481,
+   208
+  ],
+  "pivot_in_layer": [
+   14.5,
+   19.8
+  ],
+  "base_tint_rgb": [
+   240,
+   248,
+   250
+  ],
+  "bpp": 4,
+  "note": "the 2"
+ },
+ "underline": {
+  "file": "layer-underline.png",
+  "mode": "add",
+  "size": [
+   80,
+   29
+  ],
+  "topleft": [
+   456,
+   257
+  ],
+  "pivot_in_layer": [
+   39.5,
+   -29.2
+  ],
+  "base_tint_rgb": [
+   255,
+   70,
+   170
+  ],
+  "bpp": 4,
+  "note": "the 2's underline"
+ },
+ "ring": {
+  "file": "layer-ring.png",
+  "mode": "add",
+  "size": [
+   79,
+   68
+  ],
+  "topleft": [
+   456,
+   194
+  ],
+  "pivot_in_layer": [
+   39.5,
+   33.8
+  ],
+  "base_tint_rgb": [
+   255,
+   70,
+   170
+  ],
+  "bpp": 4,
+  "note": "ping ring = the capsule's outline, scaled up and faded"
+ },
+ "spark": {
+  "file": "layer-spark.png",
+  "mode": "add",
+  "size": [
+   32,
+   24
+  ],
+  "topleft": [
+   4,
+   0
+  ],
+  "pivot_in_layer": [
+   16,
+   12
+  ],
+  "base_tint_rgb": [
+   240,
+   248,
+   250
+  ],
+  "bpp": 4,
+  "note": "soft light that runs along the bar"
+ },
+ "powered": {
+  "file": "layer-powered.png",
+  "mode": "add",
+  "size": [
+   87,
+   31
+  ],
+  "topleft": [
+   519,
+   413
+  ],
+  "pivot_in_layer": [
+   -519,
+   -413
+  ],
+  "base_tint_rgb": [
+   200,
+   214,
+   226
+  ],
+  "bpp": 4,
+  "note": "corner wordmark (Red Hat Text); a live cube sits left of it"
+ },
+ "nodisc": {
+  "file": "layer-nodisc.png",
+  "mode": "add",
+  "size": [
+   78,
+   11
+  ],
+  "topleft": [
+   281,
+   307
+  ],
+  "pivot_in_layer": [
+   -181,
+   -292
+  ],
+  "base_tint_rgb": [
+   232,
+   104,
+   112
+  ],
+  "bpp": 4,
+  "note": "error line under the bar"
+ },
+ "tile": {
+  "file": "layer-tile.png",
+  "mode": "add",
+  "size": [
+   48,
+   48
+  ],
+  "topleft": [
+   0,
+   0
+  ],
+  "pivot_in_layer": [
+   24,
+   24
+  ],
+  "base_tint_rgb": [
+   54,
+   217,
+   224
+  ],
+  "bpp": 4,
+  "note": "mosaic tile (cut corners), drifts in the background"
+ },
+ "_screen": {
+  "w": 640,
+  "h": 480,
+  "note": "NTSC 640x480i; PAL: same layout, +16 px y offset"
+ },
+ "_bg": {
+  "kind": "gouraud triangle fan, dither on",
+  "center": [
+   320,
+   236
+  ],
+  "radii": [
+   430,
+   330
+  ],
+  "segments": 16,
+  "states": {
+   "black": {
+    "center": [
+     0,
+     0,
+     0
+    ],
+    "edge": [
+     0,
+     0,
+     0
+    ]
+   },
+   "idle": {
+    "center": [
+     62,
+     75,
+     90
+    ],
+    "edge": [
+     17,
+     21,
+     27
+    ]
+   },
+   "success": {
+    "center": [
+     58,
+     108,
+     118
+    ],
+    "edge": [
+     12,
+     30,
+     36
+    ]
+   },
+   "error": {
+    "center": [
+     86,
+     50,
+     58
+    ],
+    "edge": [
+     26,
+     14,
+     18
+    ]
+   },
+   "white": {
+    "center": [
+     225,
+     246,
+     248
+    ],
+    "edge": [
+     150,
+     196,
+     204
+    ]
+   }
+  }
+ },
+ "_cube": {
+  "center": [
+   502,
+   425
+  ],
+  "half_size": 9.5,
+  "color": [
+   156,
+   220,
+   218
+  ],
+  "tilt_x_rad": 0.5,
+  "spin_y_rad_per_s": 0.9
+ }
+}
