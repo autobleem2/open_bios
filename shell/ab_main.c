@@ -73,6 +73,20 @@ int main() {
         checkCD(fps);
         int isError = isCDError();
         int isSuccess = isCDSuccess();
+#ifdef AB_SPLASH_DEMO
+        // a test build that walks every state whatever the drive says: idle until 6 s (one ping), the error look
+        // until 11 s, idle again, the disc's verdict from 13 s
+        static unsigned demoFrames = 0;
+        unsigned demoT = ++demoFrames / fps;
+        if (demoT < 6) {
+            isError = isSuccess = 0;
+        } else if (demoT < 11) {
+            isError = 1;
+            isSuccess = 0;
+        } else if (demoT < 13) {
+            isError = isSuccess = 0;
+        }
+#endif
         if (isError && !wasError) {
             wasError = 1;
             spuScheduleError();
