@@ -29,6 +29,8 @@ jobs:
           set-safe-directory: true
       - name: Version
         run: |
+          # the image's git does not own the checkout: without this, rev-parse prints nothing
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           if [[ "$GITHUB_REF" == refs/tags/v* ]]; then echo "AB_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
           else echo "AB_VERSION=$(tr -d '\r\n' < VERSION)-$(date -u +%Y%m%d)-$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"; fi
       - name: Build and check
